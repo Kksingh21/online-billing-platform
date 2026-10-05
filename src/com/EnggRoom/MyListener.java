@@ -1,4 +1,4 @@
-﻿package com.javatpoint;
+package com.javatpoint;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
