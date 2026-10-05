@@ -1,3 +1,4 @@
+<%@page import="com.EnggRoom.DBConnection"%>
 <%@ page language="java" import="java.util.*" pageEncoding="ISO-8859-1"%>
 <%@page import="java.sql.*"%>
 <%try{
@@ -18,8 +19,8 @@ String balance=request.getParameter("balance");
 String address=request.getParameter("address");
 String description=request.getParameter("description");
 String trainer=request.getParameter("trainer");
-Class.forName("oracle.jdbc.driver.OracleDriver");
-Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
+Class.forName("org.postgresql.Driver");
+Connection con=DBConnection.getConnection();
 PreparedStatement ps=con.prepareStatement("insert into student2 values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 
 ps.setString(1,id);
@@ -45,3 +46,4 @@ e2.printStackTrace();
 }
 %>
 <jsp:forward page="generalinfo.jsp"></jsp:forward>
+
