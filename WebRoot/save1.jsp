@@ -1,3 +1,4 @@
+<%@page import="com.EnggRoom.DBConnection"%>
 <%@ page language="java" import="java.util.*" pageEncoding="ISO-8859-1"%>
 <%@page import="java.sql.*"%>
 <%@page import="org.apache.taglibs.standard.tag.common.fmt.SetBundleSupport"%>
@@ -20,8 +21,8 @@ String balance=request.getParameter("balance");
 String address=request.getParameter("address");
 String description=request.getParameter("description");
 String trainer=request.getParameter("trainer");
-Class.forName("oracle.jdbc.driver.OracleDriver");
-Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
+Class.forName("org.postgresql.Driver");
+Connection con=DBConnection.getConnection();
 PreparedStatement ps=con.prepareStatement("update student2 set name='"+name+"',course='"+course+"',mobile='"+mobile+"',address='"+address+"',trainer='"+trainer+"',description='"+description+"',dateofbirth='"+dateofbirth+"',dateofjoining='"+dateofjoining+"',qualification='"+qualification+"',feesub='"+feesub+"',fee='"+fee+"',paid='"+paid+"',balance='"+balance+"',fathername='"+fathername+"',mothername='"+mothername+"'  where id= '"+id+"'");
 
 int s=ps.executeUpdate();
@@ -32,3 +33,4 @@ e2.printStackTrace();
 %>
 
 <jsp:forward  page="modify.jsp"></jsp:forward>
+

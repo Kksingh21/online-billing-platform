@@ -1,5 +1,5 @@
+<%@page import="com.EnggRoom.DBConnection"%>
 <%@ page language="java" import="java.util.*" pageEncoding="ISO-8859-1"%>
-<%@page import="org.omg.CORBA.PUBLIC_MEMBER"%>
 <%@page import="java.sql.*"%>
 <%@page import="java.util.*"%>
 <%
@@ -9,8 +9,8 @@ String userpass=request.getParameter("userpass");
 String branch=request.getParameter("branch");
 boolean status=false;
 try{
-Class.forName("oracle.jdbc.driver.OracleDriver");
-Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
+Class.forName("org.postgresql.Driver");
+Connection con=DBConnection.getConnection();
 PreparedStatement ps=con.prepareStatement("select * from payregister where username=? and userpass=? and branch=? ");
 ps.setString(1,username);
 ps.setString(2,userpass);
@@ -42,3 +42,4 @@ e.printStackTrace();
 }
 
 %>
+

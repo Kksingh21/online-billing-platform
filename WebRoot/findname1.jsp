@@ -1,3 +1,4 @@
+<%@page import="com.EnggRoom.DBConnection"%>
 <%@ page language="java" import="java.util.*" pageEncoding="ISO-8859-1"%>
 <%@ page import="java.sql.*" %>
 
@@ -6,8 +7,8 @@
 String n=request.getParameter("val");
 if(n.length()>0){
 try{
-Class.forName("oracle.jdbc.driver.OracleDriver");
-Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
+Class.forName("org.postgresql.Driver");
+Connection con=DBConnection.getConnection();
 
 PreparedStatement ps=con.prepareStatement("select * from student2 where name like '%"+n+"%'");
 //ps.setString(1,n);
